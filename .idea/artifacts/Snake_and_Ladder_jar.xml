@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Snake-and-Ladder:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Snake_and_Ladder_jar</output-path>
+    <root id="archive" name="Snake-and-Ladder_jar.jar">
+      <element id="archive" name="Snake-and-Ladder.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -1,10 +1,9 @@
 
-import java.awt.Color;
-import javax.swing.JButton;
 import java.util.*;
 import java.awt.*;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.*;
+//import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
 /*
  * To change this template, choose Tools | Templates
@@ -15,7 +14,7 @@ import javax.swing.JOptionPane;
  *
  * @author Pinky
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class SnakeAndLadder extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
@@ -32,7 +31,7 @@ public class NewJFrame extends javax.swing.JFrame {
         
         
     
-    public NewJFrame() {
+    public SnakeAndLadder() {
         initComponents();
         
         jp2.setVisible(false);
@@ -471,26 +470,22 @@ public class NewJFrame extends javax.swing.JFrame {
             turnLabel.setText("Player 2's turn");
         else
             turnLabel.setText("Player 1's turn");
-        
-      //  JOptionPane.showMessageDialog(this, "Player "+player+" played "+r);
-        if(player==1)
-            scorep.setText(Integer.toString(r));
-        else
-            scorec.setText(Integer.toString(r));
-        
-        
+
         if(player==1)
         { 
             makeInvisible(player,p);
             p += r;
             x=p;
-            
+            scorep.setText(Integer.toString(p));
+            jLabel2.setText("Player 1's last roll: " + r);
         }
         else
         {  
             makeInvisible(player,c);
             c += r;
             x=c;
+            scorec.setText(Integer.toString(c));
+            jLabel3.setText("Player 2's last roll: " + r);
         }
        // JOptionPane.showMessageDialog(this, "Player "+player+" total : "+x);
         makeVisible(player, x);
@@ -575,229 +570,233 @@ public class NewJFrame extends javax.swing.JFrame {
         turnLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
-        p4.setBackground(new java.awt.Color(255, 0, 51));
+        p4.setIcon(new ImageIcon("blue_48.png"));
         p4.setForeground(new java.awt.Color(255, 0, 51));
         p4.setOpaque(true);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new AbsoluteLayout());
 
-        jp1.setBackground(new java.awt.Color(255, 0, 0));
-        jp1.setForeground(new java.awt.Color(255, 51, 51));
+        try{
+            jp1.setIcon(new ImageIcon("blue_48.png"));
+
+        }
+        catch (Exception ex){
+            java.util.logging.Logger.getLogger(SnakeAndLadder.class.getName()).log(java.util.logging.Level.SEVERE, "couldnt load image", ex);
+        }
+//        jp1.setForeground(new java.awt.Color(255, 51, 51));
         jp1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), null));
         jp1.setBorderPainted(false);
         jp1.setContentAreaFilled(false);
         jp1.setOpaque(true);
-        jp1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jp1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 30, 30));
+        jp1.addActionListener(evt -> jp1ActionPerformed(evt));
+        getContentPane().add(jp1, new AbsoluteConstraints(60, 310, 26, 26));
 
-        dice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dice (100x100).jpg"))); // NOI18N
+        scorep.setText(Integer.toString(1));
+        scorec.setText(Integer.toString(1));
+
+        dice.setIcon(new ImageIcon("dice.jpg")); // NOI18N
         dice.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         dice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 diceActionPerformed(evt);
             }
         });
-        getContentPane().add(dice, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 100, 90));
+        getContentPane().add(dice, new AbsoluteConstraints(450, 180, 100, 90));
 
-        jc2.setBackground(new java.awt.Color(51, 51, 255));
+        jc2.setIcon(new ImageIcon("green_48.png"));
         jc2.setOpaque(true);
-        getContentPane().add(jc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 30, 30));
+        getContentPane().add(jc2, new AbsoluteConstraints(150, 340, 26, 26));
 
-        jp3.setBackground(new java.awt.Color(255, 0, 51));
+        jp3.setIcon(new ImageIcon("blue_48.png"));
         jp3.setOpaque(true);
-        getContentPane().add(jp3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 30, 30));
+        getContentPane().add(jp3, new AbsoluteConstraints(190, 310, 26, 26));
 
-        jc3.setBackground(new java.awt.Color(0, 0, 255));
+        jc3.setIcon(new ImageIcon("green_48.png"));
         jc3.setOpaque(true);
-        getContentPane().add(jc3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 30, 30));
+        getContentPane().add(jc3, new AbsoluteConstraints(220, 340, 26, 26));
 
-        jp4.setBackground(new java.awt.Color(255, 0, 51));
-        jp4.setForeground(new java.awt.Color(255, 0, 51));
+        jp4.setIcon(new ImageIcon("blue_48.png"));
         jp4.setOpaque(true);
-        getContentPane().add(jp4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 30, 30));
+        getContentPane().add(jp4, new AbsoluteConstraints(250, 310, 26, 26));
 
-        jc4.setBackground(new java.awt.Color(0, 0, 255));
+        jc4.setIcon(new ImageIcon("green_48.png"));
         jc4.setOpaque(true);
-        getContentPane().add(jc4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 30, 30));
+        getContentPane().add(jc4, new AbsoluteConstraints(280, 340, 26, 26));
 
-        jp5.setBackground(new java.awt.Color(255, 0, 0));
+        jp5.setIcon(new ImageIcon("blue_48.png"));
         jp5.setOpaque(true);
-        getContentPane().add(jp5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 30, 30));
+        getContentPane().add(jp5, new AbsoluteConstraints(310, 310, 26, 26));
 
-        jc5.setBackground(new java.awt.Color(51, 51, 255));
+        jc5.setIcon(new ImageIcon("green_48.png"));
         jc5.setOpaque(true);
-        getContentPane().add(jc5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 30, 30));
+        getContentPane().add(jc5, new AbsoluteConstraints(340, 340, 26, 26));
 
-        jc10.setBackground(new java.awt.Color(51, 0, 255));
+        jc10.setIcon(new ImageIcon("green_48.png"));
         jc10.setOpaque(true);
-        getContentPane().add(jc10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 30, 30));
+        getContentPane().add(jc10, new AbsoluteConstraints(90, 280, 26, 26));
 
-        jp10.setBackground(new java.awt.Color(255, 0, 0));
+        jp10.setIcon(new ImageIcon("blue_48.png"));
         jp10.setOpaque(true);
-        getContentPane().add(jp10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 30, 30));
+        getContentPane().add(jp10, new AbsoluteConstraints(60, 250, 26, 26));
 
-        jp11.setBackground(new java.awt.Color(255, 0, 0));
+        jp11.setIcon(new ImageIcon("blue_48.png"));
         jp11.setOpaque(true);
-        getContentPane().add(jp11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 30, 30));
+        getContentPane().add(jp11, new AbsoluteConstraints(60, 180, 26, 26));
 
-        jp13.setBackground(new java.awt.Color(255, 0, 0));
+        jp13.setIcon(new ImageIcon("blue_48.png"));
         jp13.setOpaque(true);
-        getContentPane().add(jp13, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 30, 30));
+        getContentPane().add(jp13, new AbsoluteConstraints(180, 190, 26, 26));
 
-        jp14.setBackground(new java.awt.Color(255, 0, 0));
+        jp14.setIcon(new ImageIcon("blue_48.png"));
         jp14.setOpaque(true);
-        getContentPane().add(jp14, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 30, 30));
+        getContentPane().add(jp14, new AbsoluteConstraints(250, 190, 26, 26));
 
-        jp15.setBackground(new java.awt.Color(255, 0, 0));
+        jp15.setIcon(new ImageIcon("blue_48.png"));
         jp15.setOpaque(true);
-        getContentPane().add(jp15, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 30, 30));
+        getContentPane().add(jp15, new AbsoluteConstraints(310, 190, 26, 26));
 
-        jp16.setBackground(new java.awt.Color(255, 0, 0));
+        jp16.setIcon(new ImageIcon("blue_48.png"));
         jp16.setOpaque(true);
-        getContentPane().add(jp16, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 30, 30));
+        getContentPane().add(jp16, new AbsoluteConstraints(310, 120, 26, 26));
 
-        jp12.setBackground(new java.awt.Color(255, 0, 0));
+        jp12.setIcon(new ImageIcon("blue_48.png"));
         jp12.setOpaque(true);
-        getContentPane().add(jp12, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 30, 30));
+        getContentPane().add(jp12, new AbsoluteConstraints(120, 180, 26, 26));
 
-        jp17.setBackground(new java.awt.Color(255, 0, 0));
+        jp17.setIcon(new ImageIcon("blue_48.png"));
         jp17.setOpaque(true);
-        getContentPane().add(jp17, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 30, 30));
+        getContentPane().add(jp17, new AbsoluteConstraints(250, 120, 26, 26));
 
-        jp18.setBackground(new java.awt.Color(255, 0, 0));
+        jp18.setIcon(new ImageIcon("blue_48.png"));
         jp18.setOpaque(true);
-        getContentPane().add(jp18, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 30, 30));
+        getContentPane().add(jp18, new AbsoluteConstraints(180, 120, 26, 26));
 
-        jp19.setBackground(new java.awt.Color(255, 0, 0));
+        jp19.setIcon(new ImageIcon("blue_48.png"));
         jp19.setOpaque(true);
-        getContentPane().add(jp19, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 30, 30));
+        getContentPane().add(jp19, new AbsoluteConstraints(120, 120, 26, 26));
 
-        jp20.setBackground(new java.awt.Color(255, 0, 0));
+        jp20.setIcon(new ImageIcon("blue_48.png"));
         jp20.setOpaque(true);
-        getContentPane().add(jp20, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 30, 30));
+        getContentPane().add(jp20, new AbsoluteConstraints(60, 120, 26, 26));
 
-        jp21.setBackground(new java.awt.Color(255, 0, 0));
+        jp21.setIcon(new ImageIcon("blue_48.png"));
         jp21.setOpaque(true);
-        getContentPane().add(jp21, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 30, 30));
+        getContentPane().add(jp21, new AbsoluteConstraints(60, 60, 26, 26));
 
-        jp22.setBackground(new java.awt.Color(255, 0, 0));
+        jp22.setIcon(new ImageIcon("blue_48.png"));
         jp22.setOpaque(true);
-        getContentPane().add(jp22, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 30, 30));
+        getContentPane().add(jp22, new AbsoluteConstraints(120, 60, 26, 26));
 
-        jp23.setBackground(new java.awt.Color(255, 0, 0));
+        jp23.setIcon(new ImageIcon("blue_48.png"));
         jp23.setOpaque(true);
-        getContentPane().add(jp23, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 30, 30));
+        getContentPane().add(jp23, new AbsoluteConstraints(180, 60, 26, 26));
 
-        jp24.setBackground(new java.awt.Color(255, 0, 0));
+        jp24.setIcon(new ImageIcon("blue_48.png"));
         jp24.setOpaque(true);
-        getContentPane().add(jp24, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 30, 30));
+        getContentPane().add(jp24, new AbsoluteConstraints(250, 60, 26, 26));
 
-        jp25.setBackground(new java.awt.Color(255, 0, 0));
+        jp25.setIcon(new ImageIcon("blue_48.png"));
         jp25.setOpaque(true);
-        getContentPane().add(jp25, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 30, 30));
+        getContentPane().add(jp25, new AbsoluteConstraints(310, 60, 26, 26));
 
-        jp6.setBackground(new java.awt.Color(255, 0, 0));
+        jp6.setIcon(new ImageIcon("blue_48.png"));
         jp6.setOpaque(true);
-        getContentPane().add(jp6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 30, 30));
+        getContentPane().add(jp6, new AbsoluteConstraints(310, 250, 26, 26));
 
-        jp9.setBackground(new java.awt.Color(255, 0, 0));
+        jp9.setIcon(new ImageIcon("blue_48.png"));
         jp9.setOpaque(true);
-        getContentPane().add(jp9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 30, 30));
+        getContentPane().add(jp9, new AbsoluteConstraints(120, 250, 26, 26));
 
-        jp8.setBackground(new java.awt.Color(255, 0, 0));
+        jp8.setIcon(new ImageIcon("blue_48.png"));
         jp8.setOpaque(true);
-        getContentPane().add(jp8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 30, 30));
+        getContentPane().add(jp8, new AbsoluteConstraints(190, 250, 26, 26));
 
-        jp7.setBackground(new java.awt.Color(255, 0, 0));
+        jp7.setIcon(new ImageIcon("blue_48.png"));
         jp7.setOpaque(true);
-        getContentPane().add(jp7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 30, 30));
+        getContentPane().add(jp7, new AbsoluteConstraints(250, 250, 26, 26));
 
-        jc6.setBackground(new java.awt.Color(51, 51, 255));
+        jc6.setIcon(new ImageIcon("green_48.png"));
         jc6.setOpaque(true);
-        getContentPane().add(jc6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 30, 30));
+        getContentPane().add(jc6, new AbsoluteConstraints(340, 280, 26, 26));
 
-        jc7.setBackground(new java.awt.Color(51, 51, 255));
+        jc7.setIcon(new ImageIcon("green_48.png"));
         jc7.setOpaque(true);
-        getContentPane().add(jc7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 30, 30));
+        getContentPane().add(jc7, new AbsoluteConstraints(280, 280, 26, 26));
 
-        jc8.setBackground(new java.awt.Color(51, 51, 255));
+        jc8.setIcon(new ImageIcon("green_48.png"));
         jc8.setOpaque(true);
-        getContentPane().add(jc8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 30, 30));
+        getContentPane().add(jc8, new AbsoluteConstraints(220, 280, 26, 26));
 
-        jc9.setBackground(new java.awt.Color(51, 51, 255));
+        jc9.setIcon(new ImageIcon("green_48.png"));
         jc9.setOpaque(true);
-        getContentPane().add(jc9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 30, 30));
+        getContentPane().add(jc9, new AbsoluteConstraints(160, 280, 26, 26));
 
-        jc11.setBackground(new java.awt.Color(51, 0, 255));
+        jc11.setIcon(new ImageIcon("green_48.png"));
         jc11.setOpaque(true);
-        getContentPane().add(jc11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 30, 30));
+        getContentPane().add(jc11, new AbsoluteConstraints(90, 220, 26, 26));
 
-        jc12.setBackground(new java.awt.Color(51, 0, 255));
+        jc12.setIcon(new ImageIcon("green_48.png"));
         jc12.setOpaque(true);
-        getContentPane().add(jc12, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 30, 30));
+        getContentPane().add(jc12, new AbsoluteConstraints(150, 220, 26, 26));
 
-        jc13.setBackground(new java.awt.Color(51, 0, 255));
+        jc13.setIcon(new ImageIcon("green_48.png"));
         jc13.setOpaque(true);
-        getContentPane().add(jc13, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 30, 30));
+        getContentPane().add(jc13, new AbsoluteConstraints(220, 220, 26, 26));
 
-        jc14.setBackground(new java.awt.Color(51, 0, 255));
+        jc14.setIcon(new ImageIcon("green_48.png"));
         jc14.setOpaque(true);
-        getContentPane().add(jc14, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 30, 30));
+        getContentPane().add(jc14, new AbsoluteConstraints(280, 220, 26, 26));
 
-        jc15.setBackground(new java.awt.Color(51, 0, 255));
+        jc15.setIcon(new ImageIcon("green_48.png"));
         jc15.setOpaque(true);
-        getContentPane().add(jc15, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 30, 30));
+        getContentPane().add(jc15, new AbsoluteConstraints(340, 220, 26, 26));
 
-        jc16.setBackground(new java.awt.Color(51, 0, 255));
+        jc16.setIcon(new ImageIcon("green_48.png"));
         jc16.setOpaque(true);
-        getContentPane().add(jc16, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 30, 30));
+        getContentPane().add(jc16, new AbsoluteConstraints(340, 150, 26, 26));
 
-        jc17.setBackground(new java.awt.Color(51, 0, 255));
+        jc17.setIcon(new ImageIcon("green_48.png"));
         jc17.setOpaque(true);
-        getContentPane().add(jc17, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 30, 30));
+        getContentPane().add(jc17, new AbsoluteConstraints(280, 150, 26, 26));
 
-        jc18.setBackground(new java.awt.Color(51, 0, 255));
+        jc18.setIcon(new ImageIcon("green_48.png"));
         jc18.setOpaque(true);
-        getContentPane().add(jc18, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 30, 30));
+        getContentPane().add(jc18, new AbsoluteConstraints(220, 150, 26, 26));
 
-        jc19.setBackground(new java.awt.Color(51, 0, 255));
+        jc19.setIcon(new ImageIcon("green_48.png"));
         jc19.setOpaque(true);
-        getContentPane().add(jc19, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 30, 30));
+        getContentPane().add(jc19, new AbsoluteConstraints(150, 150, 26, 26));
 
-        jc20.setBackground(new java.awt.Color(51, 0, 255));
+        jc20.setIcon(new ImageIcon("green_48.png"));
         jc20.setOpaque(true);
-        getContentPane().add(jc20, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 30, 30));
+        getContentPane().add(jc20, new AbsoluteConstraints(90, 150, 26, 26));
 
-        jc21.setBackground(new java.awt.Color(51, 0, 255));
+        jc21.setIcon(new ImageIcon("green_48.png"));
         jc21.setOpaque(true);
-        getContentPane().add(jc21, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 30, 30));
+        getContentPane().add(jc21, new AbsoluteConstraints(90, 90, 26, 26));
 
-        jc22.setBackground(new java.awt.Color(51, 0, 255));
+        jc22.setIcon(new ImageIcon("green_48.png"));
         jc22.setOpaque(true);
-        getContentPane().add(jc22, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 30, 30));
+        getContentPane().add(jc22, new AbsoluteConstraints(150, 90, 26, 26));
 
-        jc23.setBackground(new java.awt.Color(51, 0, 255));
+        jc23.setIcon(new ImageIcon("green_48.png"));
         jc23.setOpaque(true);
-        getContentPane().add(jc23, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 30, 30));
+        getContentPane().add(jc23, new AbsoluteConstraints(220, 90, 26, 26));
 
-        jc24.setBackground(new java.awt.Color(51, 0, 255));
+        jc24.setIcon(new ImageIcon("green_48.png"));
         jc24.setOpaque(true);
-        getContentPane().add(jc24, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 30, 30));
+        getContentPane().add(jc24, new AbsoluteConstraints(280, 90, 26, 26));
 
-        jc25.setBackground(new java.awt.Color(51, 0, 255));
+        jc25.setIcon(new ImageIcon("green_48.png"));
         jc25.setOpaque(true);
-        getContentPane().add(jc25, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 30, 30));
+        getContentPane().add(jc25, new AbsoluteConstraints(340, 90, 26, 26));
 
-        jc1.setBackground(new java.awt.Color(51, 51, 255));
+        jc1.setIcon(new ImageIcon("green_48.png"));
         jc1.setOpaque(true);
-        getContentPane().add(jc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 30, 30));
+        getContentPane().add(jc1, new AbsoluteConstraints(90, 340, 26, 26));
 
-        jp2.setBackground(new java.awt.Color(255, 0, 0));
+        jp2.setIcon(new ImageIcon("blue_48.png"));
         jp2.setForeground(new java.awt.Color(255, 51, 51));
         jp2.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), null));
         jp2.setBorderPainted(false);
@@ -808,34 +807,33 @@ public class NewJFrame extends javax.swing.JFrame {
                 jp2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 30, 30));
+        getContentPane().add(jp2, new AbsoluteConstraints(120, 310, 26, 26));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sal2.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 440, 430));
+        jLabel1.setIcon(new ImageIcon("sal2.jpg")); // NOI18N
+        getContentPane().add(jLabel1, new AbsoluteConstraints(0, -10, 440, 430));
 
         scorec.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        getContentPane().add(scorec, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, 140, 60));
+        getContentPane().add(scorec, new AbsoluteConstraints(640, 300, 140, 60));
 
         scorep.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        getContentPane().add(scorep, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 130, 140, 60));
+        getContentPane().add(scorep, new AbsoluteConstraints(640, 130, 140, 60));
 
-        jLabel2.setFont(new java.awt.Font("Tekton Pro Ext", 0, 24)); // NOI18N
-        jLabel2.setText("Player 1 rolled :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, 230, 80));
+        jLabel2.setFont(new java.awt.Font("Tekton Pro Ext", 0, 20)); // NOI18N
+        jLabel2.setText("Player 1");
+        getContentPane().add(jLabel2, new AbsoluteConstraints(610, 80, 230, 80));
 
         jLabel4.setFont(new java.awt.Font("Tekton Pro Ext", 1, 27)); // NOI18N
         jLabel4.setText("LAST ROLLED");
         jLabel4.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 210, 40));
+        getContentPane().add(jLabel4, new AbsoluteConstraints(620, 40, 210, 40));
 
         turnLabel.setFont(new java.awt.Font("Tekton Pro Ext", 1, 20)); // NOI18N
         turnLabel.setText("Player 1's turn");
-        getContentPane().add(turnLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 170, 140));
+        getContentPane().add(turnLabel, new AbsoluteConstraints(430, 90, 170, 140));
 
-        jLabel3.setFont(new java.awt.Font("Tekton Pro Ext", 0, 24)); // NOI18N
-        jLabel3.setText("Player 2 rolled :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, 230, 80));
+        jLabel3.setFont(new java.awt.Font("Tekton Pro Ext", 0, 20)); // NOI18N
+        jLabel3.setText("Player 2");
+        getContentPane().add(jLabel3, new AbsoluteConstraints(610, 250, 230, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -873,13 +871,13 @@ public class NewJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SnakeAndLadder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SnakeAndLadder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SnakeAndLadder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SnakeAndLadder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -887,7 +885,7 @@ public class NewJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                new SnakeAndLadder().setVisible(true);
             }
         });
     }
